@@ -242,7 +242,10 @@ function checkBlock(bloco) {
                 ctx.fillStyle = "gold";
                 ctx.fillRect(goal.x * tileSize, goal.y * tileSize, tileSize, tileSize);
             }
-
+              function finishMinigames() {
+    alert("Boa meu amor, você venceu o labirinto e completou o game. Aproveite seu presente. ♥");
+    window.location.href = "https://o-anjo-que-me-salvou.blogspot.com/";
+}
             window.addEventListener("keydown", function(e) {
                 let newX = player.x;
                 let newY = player.y;
@@ -262,16 +265,13 @@ function checkBlock(bloco) {
                         alert("Eita meu bem, caiu em uma armadilha. Vamos voltar pro início.");
                     }
                 });
+    drawMaze();
 
-                drawMaze();
-                 function finishMinigames() {
-                if (player.x === goal.x && player.y === goal.y) {
-                    alert("Boa meu amor, você venceu o labirinto e completou o game. Aproveite seu presente.");
-                     window.location.href = "https://seublog.com"; // Substitua pelo link do seu blog
-                }
-            });
-            drawMaze();
-        }
+    // Verifica se o jogador alcançou o objetivo
+    if (player.x === goal.x && player.y === goal.y) {
+        finishMinigames(); // Chama a função de finalização
+    }
+});
     </script>
 </body>
 </html>
