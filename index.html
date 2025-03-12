@@ -242,39 +242,36 @@ function checkBlock(bloco) {
                 ctx.fillStyle = "gold";
                 ctx.fillRect(goal.x * tileSize, goal.y * tileSize, tileSize, tileSize);
             }
-              function finishMinigames() {
-    alert("Parabéns! Você completou todos os desafios! 🎉 Agora você pode acessar o conteúdo especial.");
+
+            window.addEventListener("keydown", function(e) {
+                let newX = player.x;
+                let newY = player.y;
+                if (e.key === "ArrowUp") newY--;
+                if (e.key === "ArrowDown") newY++;
+                if (e.key === "ArrowLeft") newX--;
+                if (e.key === "ArrowRight") newX++;
+
+                if (maze[newY] && maze[newY][newX] !== 1) {
+                    player.x = newX;
+                    player.y = newY;
+                }
+                // Verifica se o jogador caiu em uma armadilha invisível
+                trap.forEach(t => {
+                    if (t[0] === player.x && t[1] === player.y) {
+                        player = { x: 1, y: 1 }; // Volta para a posição inicial
+                        alert("Eita meu bem, caiu em uma armadilha. Vamos voltar pro início.");
+                    }
+                });
+
+                drawMaze();
+if (player.x === goal.x && player.y === goal.y) {
+    alert("Parabéns! Você completou todos os desafios!");
     window.location.href = "https://seublog.com"; // Substitua pelo link do seu blog
+    finishMinigames();
 }
-
-window.addEventListener("keydown", function(e) {
-    let newX = player.x;
-    let newY = player.y;
-    if (e.key === "ArrowUp") newY--;
-    if (e.key === "ArrowDown") newY++;
-    if (e.key === "ArrowLeft") newX--;
-    if (e.key === "ArrowRight") newX++;
-
-    if (maze[newY] && maze[newY][newX] !== 1) {
-        player.x = newX;
-        player.y = newY;
-    }
-    
-    // Verifica se o jogador caiu em uma armadilha invisível
-    trap.forEach(t => {
-        if (t[0] === player.x && t[1] === player.y) {
-            player = { x: 1, y: 1 }; // Volta para a posição inicial
-            alert("Eita meu bem, caiu em uma armadilha. Vamos voltar pro início.");
+            });
+            drawMaze();
         }
-    });
-
-    drawMaze();
-
-    // Verifica se o jogador alcançou o objetivo
-    if (player.x === goal.x && player.y === goal.y) {
-        finishMinigames(); // Chama a função de finalização
-    }
-});
     </script>
 </body>
 </html>
