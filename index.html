@@ -264,15 +264,14 @@ function checkBlock(bloco) {
                 });
 
                 drawMaze();
+                 function finishMinigames() {
                 if (player.x === goal.x && player.y === goal.y) {
                     alert("Boa meu amor, você venceu o labirinto e completou o game. Aproveite seu presente.");
+                     window.location.href = "https://seublog.com"; // Substitua pelo link do seu blog
                 }
             });
             drawMaze();
         }
-        function finishMinigames() {
-    window.location.href = "https://o-anjo-que-me-salvou.blogspot.com/"; // Link do seu blog
-}
     </script>
 </body>
 </html>
