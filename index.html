@@ -56,32 +56,12 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
         flex-direction: column;
         text-align: center; /* Garante que o texto &quot;Press Start&quot; esteja centralizado */
     }
-/* Animação de pulsação do logo */
-@keyframes pulse {
-    0% {
-        transform: scale(1); /* Tamanho inicial */
-        opacity: 1; /* Opacidade inicial */
-    }
-    50% {
-        transform: scale(1.1); /* Aumenta o tamanho */
-        opacity: 0.8; /* Diminui a opacidade */
-    }
-    100% {
-        transform: scale(1); /* Retorna ao tamanho original */
-        opacity: 1; /* Retorna à opacidade original */
-    }
-}
-
-/* Aplica a animação de pulsação ao logo */
-#mario-logo {
-    animation: pulse 2s infinite; /* A animação acontece a cada 2 segundos, e se repete infinitamente */
-}
  /* Efeito de &quot;Press Start P1&quot; */
     #press-start {
         font-family: &#39;Press Start 2P&#39;, cursive;
         font-size: 24px;
         color: white;
-        margin-top: 30px; /* Distância para garantir que o texto fique abaixo do logo */
+        margin-top: -290px; /* Distância para garantir que o texto fique abaixo do logo */
         cursor: pointer;
         text-transform: uppercase;
         animation: blink 1s infinite alternate;
@@ -101,7 +81,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
 </head>
 <body>
     <div id="splash-screen">
-        <img id="mario-logo" src="https://i.imgur.com/dlAoE80.png" alt="Logo do Mario" style="width: 300px;">
+        <img id="mario-logo" src="https://i.imgur.com/zJ6ZZDr.gif" alt="Logo do Mario" style="width: 1920px;">
         <div id="press-start" onclick="startGame()">Press Start P1</div>
     </div>
     
