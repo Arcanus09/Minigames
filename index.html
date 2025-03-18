@@ -28,7 +28,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
         .bloco-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 50px;
             margin-top: 20px;
         }
         .bloco {
@@ -61,8 +61,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
         font-family: &#39;Press Start 2P&#39;, cursive;
         font-size: 24px;
         color: white;
-        position: relative;
-        top: 30px;
+        margin-top: -290px; /* Distância para garantir que o texto fique abaixo do logo */
         cursor: pointer;
         text-transform: uppercase;
         animation: blink 1s infinite alternate;
@@ -78,12 +77,40 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
         flex-direction: column;
         align-items: center;
     }
+/* Caixa para as perguntas */
+#question-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;       /* Centraliza e separa a caixa da borda */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);  /* Fundo semi-transparente para destaque */
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Estilo dos botões das respostas */
+#question-container button {
+  margin: 10px;            /* Espaço entre os botões */
+  padding: 10px 20px;
+  min-width: 150px;        /* Garante que os botões tenham largura mínima para acomodar os nomes */
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#question-container button:hover {
+  background-color: #555;
+}
     </style>
 </head>
 <body>
     <div id="splash-screen">
         <img id="mario-logo" src="https://i.imgur.com/zJ6ZZDr.gif" alt="Logo do Mario" style="width: 1920px;">
-<div id="press-start">Press Start P1</div>
+        <div id="press-start" onclick="startGame()">Press Start P1</div>
     </div>
     
     <div id="quiz" class="hidden game-container">
@@ -102,7 +129,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
     </div>
 </div>
     <div id="labirinto" class="hidden game-container">
-        <h2>MUITO BEM! VAMOS ANDAR PELO LABIRINTO? SÓ CHEGAR NO QUADRADINHO LARANJA. CUIDADO, PODE TER ARMADILHAS! PS.: USE AS SETAS PARA SE MOVER.</h2>
+        <h2>MUITO BEM! VAMOS ANDAR PELO LABIRINTO? É SÓ CHEGAR NO QUADRADINHO AMARELO. CUIDADO, PODE TER ARMADILHAS! PS.: USE AS SETAS PARA SE MOVER.</h2>
         <canvas id="mazeCanvas" width="500" height="500"></canvas>
     </div>
     
@@ -120,17 +147,15 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
     { question: "QUEM É MAIS CIUMENTO?", correctAnswer: "errado" },
     { question: "QUEM SE APAIXONOU PRIMEIRO?", correctAnswer: "certo" },
     { question: "QUEM É MAIS COMPETITIVO NOS JOGOS?", correctAnswer: "errado" },
-    { question: "QUEM FALA "EU TE AMO" MAIS VEZES?", correctAnswer: "certo" },
+    { question: "QUEM FALA 'EU TE AMO' MAIS VEZES?", correctAnswer: "certo" },
 ];
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("press-start").addEventListener("click", startGame);
-});
 
-function startGame() {
-    document.getElementById("splash-screen").style.display = "none";  
-    document.getElementById("quiz").classList.remove("hidden");  
-    loadQuestion();  
-}
+        function startGame() {
+            document.getElementById("splash-screen").style.display = "none";
+            document.getElementById("quiz").classList.remove("hidden");
+            loadQuestion();
+        }
+
         function loadQuestion() {
             if (currentQuestionIndex < questions.length) {
                 const currentQuestion = questions[currentQuestionIndex];
@@ -195,13 +220,13 @@ function checkBlock(bloco) {
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1],
                 [1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1],
                 [0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1],
-                [1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0],
-                [1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0],
-                [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1],
+                [0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0],
+                [0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1],
                 [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
-                [1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
-                [1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-                [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+                [0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
+                [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+                [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
             ];
             const trap = [ [2, 1], [6, 8], [10, 5],[8, 8], [8, 9], [7, 10], [14, 12] ]; // Armadilhas invisíveis
     [3, 6], [5, 10], [7, 3], [9, 12], [11, 6], [6, 11]// Novas armadilhas
