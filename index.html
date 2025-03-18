@@ -86,40 +86,40 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
     </div>
     
     <div id="quiz" class="hidden game-container">
-        <h2>Quiz: Vamos jogar?</h2>
+        <h2>ACHOU QUE IA SER FÁCIL DESVENDAR O MISTÉRIO? TEM MAIS UMAS FASES PARA COMPLETAR. VAMOS JOGAR, MEU AMOR?</h2>
         <div id="question-container">
-            <p id="question">Quem é mais paciente?</p>
-            <button onclick="checkAnswer('certo')">Eu</button>
-            <button onclick="checkAnswer('errado')">Corujinha</button>
+            <p id="question">QUEM É MAIS PACIENTE?</p>
+            <button onclick="checkAnswer('certo')">GABRIEL</button>
+            <button onclick="checkAnswer('errado')">FRANCIELLE</button>
         </div>
     </div>
     
 <div id="acerta-bloco" class="hidden game-container">
-    <h2>Acerte o Bloco!</h2>
+    <h2>ARRASOU! A PRÓXIMA FASE VOCÊ PRECISA ACERTAR O BLOCO. QUAL O BLOCO CERTO?</h2>
     <div class="bloco-container" id="bloco-container">
         <!-- Os blocos serão gerados aqui -->
     </div>
 </div>
     <div id="labirinto" class="hidden game-container">
-        <h2>Labirinto Pixelado</h2>
+        <h2>MUITO BEM! VAMOS ANDAR PELO LABIRINTO? SÓ CHEGAR NO QUADRADINHO LARANJA. CUIDADO, PODE TER ARMADILHAS! PS.: USE AS SETAS PARA SE MOVER.</h2>
         <canvas id="mazeCanvas" width="500" height="500"></canvas>
     </div>
     
     <script>
         let currentQuestionIndex = 0;
    const questions = [
-    { question: "Quem é mais paciente?", correctAnswer: "certo" },
-    { question: "Quem é mais atrapalhado?", correctAnswer: "errado" },
-    { question: "Quem é mais teimoso?", correctAnswer: "errado" },
-    { question: "Quem é mais brincalhão?", correctAnswer: "certo" },
-    { question: "Quem é mais emotivo?", correctAnswer: "certo" },
-    { question: "Quem é mais organizado?", correctAnswer: "errado" },
-    { question: "Quem é mais esquecido?", correctAnswer: "errado" },
-    { question: "Quem é mais romântico?", correctAnswer: "certo" },
-    { question: "Quem é mais ciumento?", correctAnswer: "errado" },
-    { question: "Quem se apaixonou primeiro?", correctAnswer: "certo" },
-    { question: "Quem é mais competitivo nos jogos?", correctAnswer: "errado" },
-    { question: "Quem fala 'eu te amo' mais vezes?", correctAnswer: "certo" },
+    { question: "QUEM É MAIS PACIENTE?", correctAnswer: "certo" },
+    { question: "QUEM É MAIS ATRAPALHADO?", correctAnswer: "errado" },
+    { question: "QUEM É MAIS TEIMOSO?", correctAnswer: "errado" },
+    { question: "QUEM É MAIS BRINCALHÃO?", correctAnswer: "certo" },
+    { question: "QUEM É MAIS EMOTIVO?", correctAnswer: "certo" },
+    { question: "QUEM É MAIS ORGANIZADO?", correctAnswer: "errado" },
+    { question: "QUEM É MAIS ESQUECIDO?", correctAnswer: "errado" },
+    { question: "QUEM É MAIS ROMÂNTICO?", correctAnswer: "certo" },
+    { question: "QUEM É MAIS CIUMENTO?", correctAnswer: "errado" },
+    { question: "QUEM SE APAIXONOU PRIMEIRO?", correctAnswer: "certo" },
+    { question: "QUEM É MAIS COMPETITIVO NOS JOGOS?", correctAnswer: "errado" },
+    { question: "QUEM FALA "EU TE AMO" MAIS VEZES?", correctAnswer: "certo" },
 ];
 
         function startGame() {
@@ -145,7 +145,7 @@ generateBlocks(); // Chama a função para gerar os blocos
                 currentQuestionIndex++;
                 loadQuestion();
             } else {
-                alert("Errou, vida. Tente de novo.");
+                alert("ERROU, VIDA. TENTA DE NOVO.");
             }
         }
 function generateBlocks() {
@@ -173,7 +173,7 @@ function checkBlock(bloco) {
         document.getElementById("labirinto").classList.remove("hidden");
         startLabirinto();
     } else {
-        alert("Hum, bloco errado. Tenta de novo?");
+        alert("HUM, BLOCO ERRADO. TENTA DE NOVO?");
     }
 }
         function startLabirinto() {
@@ -239,13 +239,13 @@ function checkBlock(bloco) {
                 trap.forEach(t => {
                     if (t[0] === player.x && t[1] === player.y) {
                         player = { x: 1, y: 1 }; // Volta para a posição inicial
-                        alert("Eita meu bem, caiu em uma armadilha. Vamos voltar pro início.");
+                        alert("EITA MEU BEM, CAIU EM UMA ARMADILHA. VAMOS VOLTAR PARA O INÍCIO?");
                     }
                 });
 
                 drawMaze();
 if (player.x === goal.x && player.y === goal.y) {
-    alert("Boa, meu amor! Você completou todos os desafios e desbloqueou seu prêmio, aproveite seu presente. Eu te amo!♥♥♥");
+    alert("BOA, MEU AMOR! VOCÊ COMPLETOU TODOS OS DESAFIOS E DESBLOQUEOU SEU PRÊMIO, APROVEITE SEU PRESENTE. EU TE AMO, MINHA VIDA! ♥♥♥");
     window.location.href = "https://o-anjo-que-me-salvou.blogspot.com/2025/02/aniversario-do-meu-amor.html";
 }
             });
