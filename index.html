@@ -122,7 +122,8 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
 ];
 
         function startGame() {
-            document.getElementById("press-start").addEventListener("click", startGame);
+            window.onload = function() {
+    document.getElementById("press-start").addEventListener("click", startGame);
             document.getElementById("splash-screen").style.display = "none";
             document.getElementById("quiz").classList.remove("hidden");
             loadQuestion();
