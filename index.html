@@ -14,7 +14,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #5d94fb;
+        background-color: black;
         color: white;
         font-family: Press Start 2P;
         text-align: center;
@@ -48,7 +48,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #5d94fb;
+        background-color: black;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -56,6 +56,26 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
         flex-direction: column;
         text-align: center; /* Garante que o texto &quot;Press Start&quot; esteja centralizado */
     }
+/* Animação de pulsação do logo */
+@keyframes pulse {
+    0% {
+        transform: scale(1); /* Tamanho inicial */
+        opacity: 1; /* Opacidade inicial */
+    }
+    50% {
+        transform: scale(1.1); /* Aumenta o tamanho */
+        opacity: 0.8; /* Diminui a opacidade */
+    }
+    100% {
+        transform: scale(1); /* Retorna ao tamanho original */
+        opacity: 1; /* Retorna à opacidade original */
+    }
+}
+
+/* Aplica a animação de pulsação ao logo */
+#mario-logo {
+    animation: pulse 2s infinite; /* A animação acontece a cada 2 segundos, e se repete infinitamente */
+}
  /* Efeito de &quot;Press Start P1&quot; */
     #press-start {
         font-family: &#39;Press Start 2P&#39;, cursive;
@@ -81,49 +101,48 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
 </head>
 <body>
     <div id="splash-screen">
-        <img id="mario-logo" src="https://i.imgur.com/zJ6ZZDr.gif" alt="Logo do Mario" style="width: 1920px;">
+        <img id="mario-logo" src="https://i.imgur.com/dlAoE80.png" alt="Logo do Mario" style="width: 300px;">
+        <div id="press-start" onclick="startGame()">Press Start P1</div>
     </div>
     
     <div id="quiz" class="hidden game-container">
-        <h2>ACHOU QUE IA SER FÁCIL DESVENDAR O MISTÉRIO? TEM MAIS UMAS FASES PARA COMPLETAR. VAMOS JOGAR, MEU AMOR?</h2>
+        <h2>Quiz: Vamos jogar?</h2>
         <div id="question-container">
-            <p id="question">QUEM É MAIS PACIENTE?</p>
-            <button onclick="checkAnswer('certo')">GABRIEL</button>
-            <button onclick="checkAnswer('errado')">FRANCIELLE</button>
+            <p id="question">Quem é mais paciente?</p>
+            <button onclick="checkAnswer('certo')">Eu</button>
+            <button onclick="checkAnswer('errado')">Corujinha</button>
         </div>
     </div>
     
 <div id="acerta-bloco" class="hidden game-container">
-    <h2>ARRASOU! A PRÓXIMA FASE VOCÊ PRECISA ACERTAR O BLOCO. QUAL O BLOCO CERTO?</h2>
+    <h2>Acerte o Bloco!</h2>
     <div class="bloco-container" id="bloco-container">
         <!-- Os blocos serão gerados aqui -->
     </div>
 </div>
     <div id="labirinto" class="hidden game-container">
-        <h2>MUITO BEM! VAMOS ANDAR PELO LABIRINTO? SÓ CHEGAR NO QUADRADINHO LARANJA. CUIDADO, PODE TER ARMADILHAS! PS.: USE AS SETAS PARA SE MOVER.</h2>
+        <h2>Labirinto Pixelado</h2>
         <canvas id="mazeCanvas" width="500" height="500"></canvas>
     </div>
     
     <script>
         let currentQuestionIndex = 0;
    const questions = [
-    { question: "QUEM É MAIS PACIENTE?", correctAnswer: "certo" },
-    { question: "QUEM É MAIS ATRAPALHADO?", correctAnswer: "errado" },
-    { question: "QUEM É MAIS TEIMOSO?", correctAnswer: "errado" },
-    { question: "QUEM É MAIS BRINCALHÃO?", correctAnswer: "certo" },
-    { question: "QUEM É MAIS EMOTIVO?", correctAnswer: "certo" },
-    { question: "QUEM É MAIS ORGANIZADO?", correctAnswer: "errado" },
-    { question: "QUEM É MAIS ESQUECIDO?", correctAnswer: "errado" },
-    { question: "QUEM É MAIS ROMÂNTICO?", correctAnswer: "certo" },
-    { question: "QUEM É MAIS CIUMENTO?", correctAnswer: "errado" },
-    { question: "QUEM SE APAIXONOU PRIMEIRO?", correctAnswer: "certo" },
-    { question: "QUEM É MAIS COMPETITIVO NOS JOGOS?", correctAnswer: "errado" },
-    { question: "QUEM FALA "EU TE AMO" MAIS VEZES?", correctAnswer: "certo" },
+    { question: "Quem é mais paciente?", correctAnswer: "certo" },
+    { question: "Quem é mais atrapalhado?", correctAnswer: "errado" },
+    { question: "Quem é mais teimoso?", correctAnswer: "errado" },
+    { question: "Quem é mais brincalhão?", correctAnswer: "certo" },
+    { question: "Quem é mais emotivo?", correctAnswer: "certo" },
+    { question: "Quem é mais organizado?", correctAnswer: "errado" },
+    { question: "Quem é mais esquecido?", correctAnswer: "errado" },
+    { question: "Quem é mais romântico?", correctAnswer: "certo" },
+    { question: "Quem é mais ciumento?", correctAnswer: "errado" },
+    { question: "Quem se apaixonou primeiro?", correctAnswer: "certo" },
+    { question: "Quem é mais competitivo nos jogos?", correctAnswer: "errado" },
+    { question: "Quem fala 'eu te amo' mais vezes?", correctAnswer: "certo" },
 ];
 
         function startGame() {
-            window.onload = function() {
-    document.getElementById("press-start").addEventListener("click", startGame);
             document.getElementById("splash-screen").style.display = "none";
             document.getElementById("quiz").classList.remove("hidden");
             loadQuestion();
@@ -146,7 +165,7 @@ generateBlocks(); // Chama a função para gerar os blocos
                 currentQuestionIndex++;
                 loadQuestion();
             } else {
-                alert("ERROU, VIDA. TENTA DE NOVO.");
+                alert("Errou, vida. Tente de novo.");
             }
         }
 function generateBlocks() {
@@ -174,7 +193,7 @@ function checkBlock(bloco) {
         document.getElementById("labirinto").classList.remove("hidden");
         startLabirinto();
     } else {
-        alert("HUM, BLOCO ERRADO. TENTA DE NOVO?");
+        alert("Hum, bloco errado. Tenta de novo?");
     }
 }
         function startLabirinto() {
@@ -240,15 +259,14 @@ function checkBlock(bloco) {
                 trap.forEach(t => {
                     if (t[0] === player.x && t[1] === player.y) {
                         player = { x: 1, y: 1 }; // Volta para a posição inicial
-                        alert("EITA MEU BEM, CAIU EM UMA ARMADILHA. VAMOS VOLTAR PARA O INÍCIO?");
+                        alert("Eita meu bem, caiu em uma armadilha. Vamos voltar pro início.");
                     }
                 });
 
                 drawMaze();
-if (player.x === goal.x && player.y === goal.y) {
-    alert("BOA, MEU AMOR! VOCÊ COMPLETOU TODOS OS DESAFIOS E DESBLOQUEOU SEU PRÊMIO, APROVEITE SEU PRESENTE. EU TE AMO, MINHA VIDA! ♥♥♥");
-    window.location.href = "https://o-anjo-que-me-salvou.blogspot.com/2025/02/aniversario-do-meu-amor.html";
-}
+                if (player.x === goal.x && player.y === goal.y) {
+                    alert("Boa meu amor, você venceu o labirinto e completou o game. Aproveite seu presente.");
+                }
             });
             drawMaze();
         }
