@@ -82,7 +82,6 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
 <body>
     <div id="splash-screen">
         <img id="mario-logo" src="https://i.imgur.com/zJ6ZZDr.gif" alt="Logo do Mario" style="width: 1920px;">
-        <div id="press-start" onclick="startGame()">Press Start P1</div>
     </div>
     
     <div id="quiz" class="hidden game-container">
@@ -123,6 +122,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
 ];
 
         function startGame() {
+            document.getElementById("press-start").addEventListener("click", startGame);
             document.getElementById("splash-screen").style.display = "none";
             document.getElementById("quiz").classList.remove("hidden");
             loadQuestion();
