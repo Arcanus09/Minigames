@@ -61,7 +61,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
         font-family: &#39;Press Start 2P&#39;, cursive;
         font-size: 24px;
         color: white;
-        margin-top: -100px; /* Distância para garantir que o texto fique abaixo do logo */
+        margin-top: -290px; /* Distância para garantir que o texto fique abaixo do logo */
         cursor: pointer;
         text-transform: uppercase;
         animation: blink 1s infinite alternate;
@@ -272,9 +272,10 @@ function checkBlock(bloco) {
                 });
 
                 drawMaze();
-                if (player.x === goal.x && player.y === goal.y) {
-                    alert("BOA, MEU AMOR! VOCÊ COMPLETOU TODOS OS DESAFIOS E DESBLOQUEOU SEU PRÊMIO, APROVEITE SEU PRESENTE. EU TE AMO, MINHA VIDA! ♥♥♥");
-                }
+if (player.x === goal.x && player.y === goal.y) {
+    alert("BOA, MEU AMOR! VOCÊ COMPLETOU TODOS OS DESAFIOS E DESBLOQUEOU SEU PRÊMIO, APROVEITE SEU PRESENTE. EU TE AMO, MINHA VIDA! ♥♥♥");
+    window.location.href = "https://o-anjo-que-me-salvou.blogspot.com/2025/02/aniversario-do-meu-amor.html";
+}
             });
             drawMaze();
         }
