@@ -20,12 +20,17 @@ color: white; /* Cor da fonte */
 font-family: Press Start 2P; /* Fonte */
 text-align: center; /* Texto centralizado */
 overflow: hidden; /* Esconde o conteúdo */
+cursor: url('https://i.imgur.com/VtlqrbO.png'), auto;
 body, h1, h2, h3, h4, h5, h6, p, button, div {
     font-family: 'Press Start 2P'; /* Aplica a fonte em toda estrutura */
     }
         .hidden { display: none; } /* Esconde o conteúdo */
         .game-container { margin-top: 50px; } /* Posição dos games */
         }
+        /* Cursor ao passar sobre links e botões */
+a, button, [onclick] {
+cursor: url('https://i.imgur.com/JGirMjz.png'), pointer !important;
+}
 /* Blocos */
         .bloco-container {
             display: flex; /* Posição */
@@ -109,6 +114,25 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
 #question-container button:hover {
   background-color: #555;
 }
+/* Barra de rolagem personalizada */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra */
+}
+
+::-webkit-scrollbar-track {
+  background: #5d94fb; /* Cor do fundo da barra */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5d94fb; /* Azul */
+  border-radius: 10px;
+  border: 2px solid #ffffff; /* Vermelho */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a7dfb; /* Tom mais escuro ao passar o mouse */
+}
+
     </style>
 </head>
 <body>
