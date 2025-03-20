@@ -7,100 +7,103 @@
    <!-- Importando a fonte "Press Start 2P" -->
      <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-             body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #5d94fb;
-        color: white;
-        font-family: Press Start 2P;
-        text-align: center;
-        overflow: hidden;
+body {
+margin: 0; /* Margem */
+padding: 0; /* Mover */
+display: flex; /* Posição */
+background-image: url(https://i.imgur.com/0eJepYH.jpeg); /* Fundo */
+justify-content: center; /* Centralizado */ 
+line-height: 1.6; /* Aumenta o espaçamento entre linhas */
+align-items: center; /* Centralizado */
+height: 100vh; /* Tamanho */
+color: white; /* Cor da fonte */
+font-family: Press Start 2P; /* Fonte */
+text-align: center; /* Texto centralizado */
+overflow: hidden; /* Esconde o conteúdo */
 body, h1, h2, h3, h4, h5, h6, p, button, div {
-    font-family: 'Press Start 2P';
+    font-family: 'Press Start 2P'; /* Aplica a fonte em toda estrutura */
     }
-        .hidden { display: none; }
-        .game-container { margin-top: 50px; }
+        .hidden { display: none; } /* Esconde o conteúdo */
+        .game-container { margin-top: 50px; } /* Posição dos games */
         }
+/* Blocos */
         .bloco-container {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 20px;
+            display: flex; /* Posição */
+            justify-content: center; /* Centralizado */
+            gap: 50px; /* Distância entre eles */
+            margin-top: 20px; /* Move para cima */
         }
         .bloco {
-            width: 50px;
-            height: 50px;
-            background-image: url('https://i.imgur.com/Lf3AiWJ.png');
-            background-size: cover;
-            cursor: pointer;
+            width: 50px; /* Largura */
+            height: 50px; /* Altura */
+            background-image: url('https://i.imgur.com/Lf3AiWJ.png'); /* Imagem dos blocos */
+            background-size: cover; /* Cobre o espaço */
+            cursor: pointer; /* Cursor clicável */
         }
         canvas {
-            border: 2px solid white;
-            background-color: #000;
+            border: 2px solid white; /* Borda */
+            background-color: #000; /* Fundo */
         }
+/* Tela de início */
 #splash-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #5d94fb;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        flex-direction: column;
-        text-align: center; /* Garante que o texto &quot;Press Start&quot; esteja centralizado */
+        position: relative; /* Posição */
+        top: 0; /* Mexe para cima */
+        left: 0; /* Mexe para a esquerda */
+        width: 100%; /* Largura fixa */
+        height: 100%; /* Altura fixa */
+        background-image: url(https://i.imgur.com/0eJepYH.jpeg); /* Fundo */
+        display: flex; /* Posição */
+        justify-content: center; /* Centralizado */
+        align-items: center; /* Centralizado */
+        z-index: 9999; /* Move para cima */
+        flex-direction: column; /* Organiza os itens em coluna */
+        text-align: center; /* Garante que o texto Press Start esteja centralizado */
         overflow-y: scroll !important; /* Garante que a rolagem sempre apareça */
     }
- /* Efeito de &quot;Press Start P1&quot; */
+ /* Efeito de Press Start P1 */
     #press-start {
-        font-family: &#39;Press Start 2P&#39;, cursive;
-        font-size: 24px;
-        color: white;
-        margin-top: -290px; /* Distância para garantir que o texto fique abaixo do logo */
-        cursor: pointer;
-        text-transform: uppercase;
-        animation: blink 1s infinite alternate;
+        font-family: &#39;Press Start 2P&#39;, cursive; /* Fonte */
+        font-size: 16px; /* Tamanho da fonte */
+        color: white; /* Cor da fonte */
+        margin-top: -160px; /* Distância para garantir que o texto fique abaixo do logo */
+        cursor: pointer; /* Cursor clicável */
+        text-transform: uppercase; /* Texto em caixas altas */ 
+        animation: blink 1s infinite alternate; /* Animação para piscar */
     }
 
-    /* Animação de piscando */
+    /* Animação para piscar */
     @keyframes blink {
-        0% { opacity: 1; }
-        100% { opacity: 0.5; }
+        0% { opacity: 1; } /* Aumenta a opacidade */
+        100% { opacity: 0.5; } /* Diminui a opacidade */
     }
            #game-container {
-        display: none;
-        flex-direction: column;
-        align-items: center;
+        display: none; /* Esconde o conteúdo */
+        flex-direction: column; /* Alinhado em coluna */
+        align-items: center; /* Alinha os games no centro */ 
     }
 /* Caixa para as perguntas */
 #question-container {
-  width: 90%;
-  max-width: 600px;
-  margin: 20px auto;       /* Centraliza e separa a caixa da borda */
-  padding: 20px;
+  width: 90%; /* Largura */
+  max-width: 600px; /* Largura máxima */
+  margin: 20px auto; /* Centraliza e separa a caixa da borda */
+  padding: 20px; /* Preenchimento */
   background: rgba(0, 0, 0, 0.6);  /* Fundo semi-transparente para destaque */
-  border-radius: 10px;
-  box-sizing: border-box;
+  border-radius: 10px; /* Borda */
+  box-sizing: border-box; /* Botão */
 }
 
 /* Estilo dos botões das respostas */
 #question-container button {
-  margin: 10px;            /* Espaço entre os botões */
-  padding: 10px 20px;
-  min-width: 150px;        /* Garante que os botões tenham largura mínima para acomodar os nomes */
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
-  cursor: pointer;
-  box-sizing: border-box;
+  margin: 10px; /* Espaço entre os botões */
+  padding: 10px 20px; /* Preenchimento */
+  min-width: 150px; /* Garante que os botões tenham largura mínima para acomodar os nomes */
+  font-size: 16px; /* Tamanho da fonte */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Distância da borda */
+  background-color: #333; /* Cor do fundo */
+  color: #fff; /* Cor da fonte */
+  cursor: pointer; /* Cursor clicável */
+  box-sizing: border-box; /* Botão */
 }
 
 #question-container button:hover {
@@ -110,7 +113,7 @@ body, h1, h2, h3, h4, h5, h6, p, button, div {
 </head>
 <body>
     <div id="splash-screen">
-        <img id="mario-logo" src="https://i.imgur.com/aieRF92.gif" alt="Logo do Mario" style="width: 1920px;">
+        <img id="mario-logo" src="https://i.imgur.com/aieRF92.gif" alt="Logo do Mario" style="width: 1000px;">
         <div id="press-start" onclick="startGame()">Press Start P1</div>
     </div>
     
